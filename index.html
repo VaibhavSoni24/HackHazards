@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Language Flashcard App</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>AI-Powered Flashcard App</h1>
+    <nav>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#flashcard-decks"><i class="fas fa-th"></i> Flashcard Decks</a></li>
+        <li><a href="#flashcards"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+        <li><a href="#quiz"><i class="fas fa-question-circle"></i> Quiz</a></li>
+        <li><a href="#upload"><i class="fas fa-upload"></i> Upload</a></li>
+        <li><a href="#feedback"><i class="fas fa-comment-dots"></i> AI Feedback</a></li>
+        <li><a href="#progress"><i class="fas fa-chart-line"></i> Progress</a></li>
+        <li><a href="#reviews"><i class="fas fa-star"></i> Reviews</a></li>
+        <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+      </ul>
+    </nav>
+    <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <main>
+    <section id="home" class="active-section">
+      <div class="home-container">
+        <div class="welcome-message">
+          <h2>Welcome to AI Language Learning</h2>
+          <p>Master languages faster with AI-powered feedback and personalized learning</p>
+          <button id="get-started-btn" class="primary-btn">Get Started <i class="fas fa-arrow-right"></i></button>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-layer-group"></i>
+            <h3>Flashcard Learning</h3>
+            <p>Create and study digital flashcards to memorize vocabulary efficiently</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-question-circle"></i>
+            <h3>Interactive Quiz</h3>
+            <p>Test your knowledge with quizzes that adapt to your learning progress</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-microphone"></i>
+            <h3>Pronunciation Feedback</h3>
+            <p>Upload audio and get AI feedback on your pronunciation accuracy</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-image"></i>
+            <h3>Image Recognition</h3>
+            <p>Upload images and let AI identify objects in your target language</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flashcard Decks Section -->
+    <section id="flashcard-decks">
+      <h2>Flashcard Decks</h2>
+      <div class="deck-container">
+        <div class="deck-card" data-category="basics">
+          <div class="deck-icon">
+            <i class="fas fa-comment"></i>
+          </div>
+          <h3>Basic Phrases</h3>
+          <p>12 cards</p>
+          <div class="completion-status">
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%"></div>
+            </div>
+            <span>75% complete</span>
+          </div>
+        </div>
+        
+        <div class="deck-card" data-category="food">
+          <div class="deck-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3>Food & Dining</h3>
+          <p>20 cards</p>
+          <div class="completion-status">
+            <div class="progress-bar">
+              <div class="progress" style="width: 40%"></div>
+            </div>
+            <span>40% complete</span>
+          </div>
+        </div>
+        
+        <div class="deck-card" data-category="travel">
+          <div class="deck-icon">
+            <i class="fas fa-plane"></i>
+          </div>
+          <h3>Travel Words</h3>
+          <p>15 cards</p>
+          <div class="completion-status">
+            <div class="progress-bar">
+              <div class="progress" style="width: 20%"></div>
+            </div>
+            <span>20% complete</span>
+          </div>
+        </div>
+        
+        <div class="deck-card" data-category="verbs">
+          <div class="deck-icon">
+            <i class="fas fa-running"></i>
+          </div>
+          <h3>Basic Verbs</h3>
+          <p>18 cards</p>
+          <div class="completion-status">
+            <div class="progress-bar">
+              <div class="progress" style="width: 0%"></div>
+            </div>
+            <span>0% complete</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flashcards" class="active-section">
+      <h2>Flashcards</h2>
+      <div id="deck-name" class="deck-name">Basic Phrases</div>
+      <div class="controls">
+        <button id="prev-card" class="control-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+        <button id="add-card" class="control-btn"><i class="fas fa-plus"></i> Add Card</button>
+        <button id="next-card" class="control-btn">Next <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="front">Hello</div>
+          <div class="back">Hola</div>
+        </div>
+      </div>      
+    </section>
+
+    <section id="quiz">
+      <h2>Quiz</h2>
+      <div class="quiz-container">
+        <div class="quiz-question-container">
+          <h3 id="quiz-question">Translate: "Hello"</h3>
+          <div class="quiz-options">
+            <button class="quiz-option">Hola</button>
+            <button class="quiz-option">Adiós</button>
+            <button class="quiz-option">Gracias</button>
+            <button class="quiz-option">Buenos días</button>
+          </div>
+        </div>
+        <div class="quiz-controls">
+          <span id="quiz-score">Score: 0/0</span>
+          <button id="next-question" class="control-btn">Next Question <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </section>
+
+    <section id="upload">
+      <h2>Upload</h2>
+      <div class="upload-container">
+        <div class="upload-type-selector">
+          <button id="image-upload-btn" class="upload-type-btn active">
+            <i class="fas fa-image"></i> Image
+          </button>
+          <button id="audio-upload-btn" class="upload-type-btn">
+            <i class="fas fa-microphone"></i> Audio
+          </button>
+        </div>
+        
+        <div id="image-upload-container" class="upload-box active-upload">
+          <i class="fas fa-image"></i>
+          <p>Drag image files here or click to upload</p>
+          <input type="file" id="image-file-upload" accept="image/*" hidden>
+          <div id="image-preview-container" class="preview-container"></div>
+        </div>
+        
+        <div id="audio-upload-container" class="upload-box">
+          <i class="fas fa-microphone"></i>
+          <p>Drag audio files here or click to upload</p>
+          <div class="audio-controls">
+            <button id="start-recording" class="control-btn">
+              <i class="fas fa-microphone"></i> Start Recording
+            </button>
+            <button id="stop-recording" class="control-btn" disabled>
+              <i class="fas fa-stop"></i> Stop
+            </button>
+          </div>
+          <input type="file" id="audio-file-upload" accept="audio/*" hidden>
+          <div id="audio-preview-container" class="preview-container"></div>
+        </div>
+        
+        <button id="submit-upload" class="control-btn submit-btn">Submit to AI <i class="fas fa-paper-plane"></i></button>
+        <div id="upload-loading" class="loading-spinner">
+          <div class="spinner"></div>
+          <p>Processing your submission...</p>
+        </div>
+        <div id="upload-error" class="error-message">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>There was an error processing your submission. Please try again.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback">
+      <h2>AI Feedback</h2>
+      <div class="feedback-container">
+        <div class="feedback-header">
+          <h3>Pronunciation Analysis</h3>
+          <p>See how well you're pronouncing words and get AI-powered suggestions to improve</p>
+        </div>
+        
+        <div class="feedback-card">
+          <div class="word-container">
+            <h4>Hello (Hola)</h4>
+            <button class="play-audio-btn"><i class="fas fa-play"></i></button>
+          </div>
+          
+          <div class="score-container">
+            <div class="score-meter">
+              <div class="score-bar" style="width: 85%;"></div>
+            </div>
+            <span class="score-value">85%</span>
+          </div>
+          
+          <div class="feedback-details">
+            <h5>Groq AI Feedback:</h5>
+            <p>Your pronunciation is good! Focus on the 'o' sound - try to make it more open. The 'h' is silent in Spanish.</p>
+          </div>
+        </div>
+        
+        <div class="feedback-card">
+          <div class="word-container">
+            <h4>Thank you (Gracias)</h4>
+            <button class="play-audio-btn"><i class="fas fa-play"></i></button>
+          </div>
+          
+          <div class="score-container">
+            <div class="score-meter">
+              <div class="score-bar" style="width: 70%;"></div>
+            </div>
+            <span class="score-value">70%</span>
+          </div>
+          
+          <div class="feedback-details">
+            <h5>Groq AI Feedback:</h5>
+            <p>Good effort! The 'r' sound needs to be rolled slightly. Try to emphasize the 'a' sound more.</p>
+          </div>
+        </div>
+        
+        <div id="feedback-history" class="feedback-history">
+          <h3>Previous Submissions</h3>
+          <ul class="history-list">
+            <li class="history-item">
+              <span class="history-date">April 10, 2025</span>
+              <span class="history-score">75% avg</span>
+              <button class="history-view-btn">View</button>
+            </li>
+            <li class="history-item">
+              <span class="history-date">April 8, 2025</span>
+              <span class="history-score">68% avg</span>
+              <button class="history-view-btn">View</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Tracker Section (new) -->
+    <section id="progress">
+      <h2>Progress Tracker</h2>
+      <div class="progress-container">
+        <div class="progress-summary">
+          <div class="progress-stat">
+            <h3>4</h3>
+            <p>Decks Started</p>
+          </div>
+          <div class="progress-stat">
+            <h3>1</h3>
+            <p>Decks Completed</p>
+          </div>
+          <div class="progress-stat">
+            <h3>65</h3>
+            <p>Cards Learned</p>
+          </div>
+          <div class="progress-stat">
+            <h3>85%</h3>
+            <p>Quiz Accuracy</p>
+          </div>
+        </div>
+
+        <div class="progress-details">
+          <h3>Learning History</h3>
+          <div class="progress-chart">
+            <!-- Placeholder for chart - would be implemented with chart.js or similar -->
+            <div class="chart-placeholder">
+              <div class="chart-bar" style="height: 30%"></div>
+              <div class="chart-bar" style="height: 45%"></div>
+              <div class="chart-bar" style="height: 60%"></div>
+              <div class="chart-bar" style="height: 75%"></div>
+              <div class="chart-bar" style="height: 65%"></div>
+              <div class="chart-bar" style="height: 85%"></div>
+              <div class="chart-bar" style="height: 80%"></div>
+            </div>
+            <div class="chart-labels">
+              <span>Apr 6</span>
+              <span>Apr 7</span>
+              <span>Apr 8</span>
+              <span>Apr 9</span>
+              <span>Apr 10</span>
+              <span>Apr 11</span>
+              <span>Apr 12</span>
+            </div>
+          </div>
+
+          <div class="deck-progress-list">
+            <h3>Deck Progress</h3>
+            <div class="deck-progress-item">
+              <div>
+                <h4>Basic Phrases</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 75%"></div>
+                </div>
+              </div>
+              <span>75%</span>
+            </div>
+            <div class="deck-progress-item">
+              <div>
+                <h4>Food & Dining</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 40%"></div>
+                </div>
+              </div>
+              <span>40%</span>
+            </div>
+            <div class="deck-progress-item">
+              <div>
+                <h4>Travel Words</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 20%"></div>
+                </div>
+              </div>
+              <span>20%</span>
+            </div>
+            <div class="deck-progress-item">
+              <div>
+                <h4>Basic Verbs</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 0%"></div>
+                </div>
+              </div>
+              <span>0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+      <h2>User Reviews</h2>
+      <div class="reviews-container">
+        <div class="reviews-header">
+          <div class="reviews-summary">
+            <div class="overall-rating">
+              <h3>4.8</h3>
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p>Based on 245 reviews</p>
+            </div>
+            <div class="rating-breakdown">
+              <div class="rating-row">
+                <span>5 stars</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 75%"></div>
+                </div>
+                <span>75%</span>
+              </div>
+              <div class="rating-row">
+                <span>4 stars</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 18%"></div>
+                </div>
+                <span>18%</span>
+              </div>
+              <div class="rating-row">
+                <span>3 stars</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 5%"></div>
+                </div>
+                <span>5%</span>
+              </div>
+              <div class="rating-row">
+                <span>2 stars</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 1%"></div>
+                </div>
+                <span>1%</span>
+              </div>
+              <div class="rating-row">
+                <span>1 star</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 1%"></div>
+                </div>
+                <span>1%</span>
+              </div>
+            </div>
+          </div>
+          <div class="write-review">
+            <button id="write-review-btn" class="primary-btn">Write a Review</button>
+          </div>
+        </div>
+        
+        <div class="review-filters">
+          <select id="sort-reviews">
+            <option value="newest">Newest First</option>
+            <option value="highest">Highest Rating</option>
+            <option value="lowest">Lowest Rating</option>
+          </select>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Reviews</button>
+            <button class="filter-btn" data-filter="5">5 Star</button>
+            <button class="filter-btn" data-filter="4">4 Star</button>
+            <button class="filter-btn" data-filter="3">3 Star</button>
+            <button class="filter-btn" data-filter="1-2">1-2 Star</button>
+          </div>
+        </div>
+        
+        <div id="reviews-list" class="reviews-list">
+          <!-- Review 1 -->
+          <div class="review-card" data-rating="5">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">
+                  <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Avatar">
+                </div>
+                <div>
+                  <h4>Maria Rodriguez</h4>
+                  <p class="review-date">April 11, 2025</p>
+                </div>
+              </div>
+              <div class="review-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <h5>Game-changer for language learning!</h5>
+              <p>The AI feedback on pronunciation has been revolutionary for my Spanish learning journey. I've tried many apps before, but this is the first one that actually helped me sound more natural. The flashcard system is intuitive and the progress tracking keeps me motivated.</p>
+            </div>
+            <div class="review-footer">
+              <button class="helpful-btn"><i class="far fa-thumbs-up"></i> Helpful (24)</button>
+              <button class="report-btn"><i class="far fa-flag"></i> Report</button>
+            </div>
+          </div>
+          
+          <!-- Review 2 -->
+          <div class="review-card" data-rating="5">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">
+                  <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Avatar">
+                </div>
+                <div>
+                  <h4>John Dawson</h4>
+                  <p class="review-date">April 9, 2025</p>
+                </div>
+              </div>
+              <div class="review-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <h5>Perfect for busy professionals</h5>
+              <p>As someone who travels frequently for business, this app has been essential for quickly learning key phrases. The image recognition feature is brilliant - I can just take a photo of a menu and get instant translations. The quiz feature helps reinforce everything I've learned.</p>
+            </div>
+            <div class="review-footer">
+              <button class="helpful-btn"><i class="far fa-thumbs-up"></i> Helpful (18)</button>
+              <button class="report-btn"><i class="far fa-flag"></i> Report</button>
+            </div>
+          </div>
+          
+          <!-- Review 3 -->
+          <div class="review-card" data-rating="4">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">
+                  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar">
+                </div>
+                <div>
+                  <h4>Sarah Chen</h4>
+                  <p class="review-date">April 7, 2025</p>
+                </div>
+              </div>
+              <div class="review-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <h5>Great app, a few suggestions</h5>
+              <p>I've been using this app for 3 months and it's definitely improved my Spanish. The AI feedback is detailed and helpful. Would give 5 stars if it had more advanced grammar exercises and offline functionality. Looking forward to future updates!</p>
+            </div>
+            <div class="review-footer">
+              <button class="helpful-btn"><i class="far fa-thumbs-up"></i> Helpful (12)</button>
+              <button class="report-btn"><i class="far fa-flag"></i> Report</button>
+            </div>
+          </div>
+          
+          <!-- Review 4 -->
+          <div class="review-card" data-rating="3">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar">
+                </div>
+                <div>
+                  <h4>Miguel Santos</h4>
+                  <p class="review-date">April 5, 2025</p>
+                </div>
+              </div>
+              <div class="review-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <h5>Decent but needs improvement</h5>
+              <p>The flashcard and quiz features are well implemented, but the pronunciation feedback seems inconsistent sometimes. As a native Spanish speaker, I noticed it occasionally accepts incorrect pronunciations. Interface is clean though, and the blog articles are helpful.</p>
+            </div>
+            <div class="review-footer">
+              <button class="helpful-btn"><i class="far fa-thumbs-up"></i> Helpful (7)</button>
+              <button class="report-btn"><i class="far fa-flag"></i> Report</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Review Form (Initially Hidden) -->
+        <div id="review-form-container" class="review-form-container">
+          <h3>Write Your Review</h3>
+          <form id="review-form">
+            <div class="form-group">
+              <label>Your Rating:</label>
+              <div class="rating-input">
+                <i class="far fa-star" data-rating="1"></i>
+                <i class="far fa-star" data-rating="2"></i>
+                <i class="far fa-star" data-rating="3"></i>
+                <i class="far fa-star" data-rating="4"></i>
+                <i class="far fa-star" data-rating="5"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="review-title">Review Title:</label>
+              <input type="text" id="review-title" placeholder="Summarize your experience">
+            </div>
+            <div class="form-group">
+              <label for="review-content">Your Review:</label>
+              <textarea id="review-content" rows="5" placeholder="Tell others about your experience with this app"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="cancel-review" class="control-btn">Cancel</button>
+              <button type="submit" class="primary-btn">Submit Review</button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="pagination">
+          <button class="pagination-btn active">1</button>
+          <button class="pagination-btn">2</button>
+          <button class="pagination-btn">3</button>
+          <button class="pagination-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section id="blog">
+      <h2>Language Learning Blog</h2>
+      <div class="blog-container">
+        <div class="blog-sidebar">
+          <div class="blog-search">
+            <input type="text" id="blog-search-input" placeholder="Search articles...">
+            <button id="blog-search-btn"><i class="fas fa-search"></i></button>
+          </div>
+          
+          <div class="blog-categories">
+            <h3>Categories</h3>
+            <ul>
+              <li><a href="#" class="category-link active" data-category="all">All Topics</a></li>
+              <li><a href="#" class="category-link" data-category="learning-tips">Learning Tips</a></li>
+              <li><a href="#" class="category-link" data-category="pronunciation">Pronunciation Guides</a></li>
+              <li><a href="#" class="category-link" data-category="culture">Cultural Insights</a></li>
+              <li><a href="#" class="category-link" data-category="ai-learning">AI in Language Learning</a></li>
+            </ul>
+          </div>
+          
+          <div class="popular-posts">
+            <h3>Popular Posts</h3>
+            <div class="popular-post-item">
+              <div class="post-thumbnail">
+                <img src="https://via.placeholder.com/70x70" alt="How AI is Revolutionizing Language Learning">
+              </div>
+              <div class="post-details">
+                <h4>How AI is Revolutionizing Language Learning</h4>
+                <p class="post-date">April 8, 2025</p>
+              </div>
+            </div>
+            <div class="popular-post-item">
+              <div class="post-thumbnail">
+                <img src="https://via.placeholder.com/70x70" alt="5 Tips for Better Pronunciation">
+              </div>
+              <div class="post-details">
+                <h4>5 Tips for Better Pronunciation</h4>
+                <p class="post-date">April 1, 2025</p>
+              </div>
+            </div>
+            <div class="popular-post-item">
+              <div class="post-thumbnail">
+                <img src="https://via.placeholder.com/70x70" alt="Learning Spanish: Where to Begin">
+              </div>
+              <div class="post-details">
+                <h4>Learning Spanish: Where to Begin</h4>
+                <p class="post-date">March 22, 2025</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="subscribe-form">
+            <h3>Stay Updated</h3>
+            <p>Get the latest articles and resources straight to your inbox.</p>
+            <form id="subscribe-form">
+              <input type="email" placeholder="Your email address" required>
+              <button type="submit" class="primary-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="blog-content">
+          <div class="blog-post featured-post" data-category="ai-learning">
+            <div class="post-image">
+              <img src="https://via.placeholder.com/800x400" alt="How AI is Revolutionizing Language Learning">
+              <div class="post-category">AI in Language Learning</div>
+            </div>
+            <div class="post-meta">
+              <span class="post-date">April 12, 2025</span>
+              <span class="post-author">by Dr. Emma Chen</span>
+            </div>
+            <h3 class="post-title">How AI is Revolutionizing Language Learning</h3>
+            <p class="post-excerpt">From personalized feedback on pronunciation to adaptive learning algorithms, artificial intelligence is transforming how we learn languages. Explore the latest advancements and how they're making language acquisition faster and more effective.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="blog-posts-grid">
+            <div class="blog-post" data-category="pronunciation">
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x200" alt="Mastering the Spanish 'R' Sound">
+                <div class="post-category">Pronunciation Guides</div>
+              </div>
+              <div class="post-meta">
+                <span class="post-date">April 10, 2025</span>
+                <span class="post-author">by Maria López</span>
+              </div>
+              <h3 class="post-title">Mastering the Spanish 'R' Sound</h3>
+              <p class="post-excerpt">Many English speakers struggle with the rolled 'R' sound in Spanish. This guide provides step-by-step practice techniques to help you perfect this challenging phoneme.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="blog-post" data-category="learning-tips">
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x200" alt="The Power of Spaced Repetition">
+                <div class="post-category">Learning Tips</div>
+              </div>
+              <div class="post-meta">
+                <span class="post-date">April 7, 2025</span>
+                <span class="post-author">by James Wilson</span>
+              </div>
+              <h3 class="post-title">The Power of Spaced Repetition</h3>
+              <p class="post-excerpt">Discover how the scientifically-proven technique of spaced repetition can dramatically improve your vocabulary retention and help you learn languages more efficiently.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="blog-post" data-category="culture">
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x200" alt="Beyond Words: Understanding Spanish Culture">
+                <div class="post-category">Cultural Insights</div>
+              </div>
+              <div class="post-meta">
+                <span class="post-date">April 5, 2025</span>
+                <span class="post-author">by Carlos Mendez</span>
+              </div>
+              <h3 class="post-title">Beyond Words: Understanding Spanish Culture</h3>
+              <p class="post-excerpt">Language learning goes beyond vocabulary and grammar. Delve into the cultural nuances that will help you communicate more effectively and authentically in Spanish.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="blog-post" data-category="learning-tips">
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x200" alt="5 Mistakes Beginners Make When Learning Spanish">
+                <div class="post-category">Learning Tips</div>
+              </div>
+              <div class="post-meta">
+                <span class="post-date">April 3, 2025</span>
+                <span class="post-author">by Ana Martinez</span>
+              </div>
+              <h3 class="post-title">5 Mistakes Beginners Make When Learning Spanish</h3>
+              <p class="post-excerpt">Are you making these common errors that slow down your language learning progress? Learn how to recognize and correct these patterns for faster improvement.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="blog-post" data-category="ai-learning">
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x200" alt="Using Speech Recognition for Better Pronunciation">
+                <div class="post-category">AI in Language Learning</div>
+              </div>
+              <div class="post-meta">
+                <span class="post-date">March 30, 2025</span>
+                <span class="post-author">by Dr. Michael Chang</span>
+              </div>
+              <h3 class="post-title">Using Speech Recognition for Better Pronunciation</h3>
+              <p class="post-excerpt">Modern AI-powered speech recognition tools can provide immediate feedback on your pronunciation. Learn how to leverage these tools to sound more like a native speaker.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="blog-post" data-category="culture">
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x200" alt="Regional Spanish Dialects: What You Need to Know">
+                <div class="post-category">Cultural Insights</div>
+              </div>
+              <div class="post-meta">
+                <span class="post-date">March 25, 2025</span>
+                <span class="post-author">by Isabella Ruiz</span>
+              </div>
+              <h3 class="post-title">Regional Spanish Dialects: What You Need to Know</h3>
+              <p class="post-excerpt">Spanish varies significantly across different countries and regions. This guide breaks down the key differences you'll encounter and how to adapt to different dialects.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          
+          <div class="blog-pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn">Next <i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HackHazards Team - CyberGenX</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
